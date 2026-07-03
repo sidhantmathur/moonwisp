@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "wisp",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:\\Users\\sidha\\AppData\\Local\\Temp\\claude\\--wsl-localhost-ubuntu-home-sidhant-Platforming-Game\\f79e5fcf-ff38-490c-9540-d014c7d77514\\scratchpad\\server.js"],
+      "port": 8377
+    }
+  ]
+}

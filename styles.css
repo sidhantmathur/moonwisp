@@ -1,72 +1,368 @@
+/* WISP — page shell + UI screens. Moody indigo night, mint + amber accents. */
 
-/*Website CSS*/
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
 body {
-  font-family: 'Roboto', sans-serif;
-  background: #fff;
+  margin: 0;
+  overflow: hidden;
+  background: #0d0a1a;
+  color: #e8e4f4;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+#frame {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+}
+
+canvas#game {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  display: block;
+}
+
+/* ---------------------------------------------------------------------- */
+/* UI overlay                                                             */
+/* ---------------------------------------------------------------------- */
+
+#ui {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.screen {
+  pointer-events: auto;
+  width: min(92vw, 640px);
+  max-height: 92dvh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 32px 28px;
+  background: rgba(13, 10, 26, 0.78);
+  border: 1px solid #3d385c;
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  animation: screen-in 220ms ease-out;
+}
+
+@keyframes screen-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.screen h1 {
+  margin: 0;
+  font-size: clamp(40px, 9vw, 68px);
+  letter-spacing: 0.22em;
+  color: #4ee3b5;
+  text-shadow: 0 0 12px #4ee3b599, 0 0 40px #4ee3b533;
+  font-weight: 700;
+}
+
+.screen h2 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: #4ee3b5;
+  text-shadow: 0 0 10px #4ee3b566;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin: -10px 0 0;
+  color: #8d84ad;
+  letter-spacing: 0.08em;
+  font-size: 13px;
+}
+
+.hint {
+  color: #ffd23e;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Buttons ---------------------------------------------------------------- */
+
+.btn-row {
+  display: flex;
+  gap: 12px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
-.game {
-  /* box-shadow: 1px 1px 2px 3px #ccc; */
-  overflow: hidden;
-  max-width: 600px;
-  max-height: 450px;
+button {
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: #e8e4f4;
+  background: #1c1730;
+  border: 1px solid #3d385c;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease, color 120ms ease;
+}
+
+button:hover {
+  border-color: #4ee3b5;
+  box-shadow: 0 0 0 1px #4ee3b555, 0 0 16px #4ee3b544;
+  color: #4ee3b5;
+  transform: translateY(-1px);
+}
+
+button:focus-visible {
+  outline: none;
+  border-color: #4ee3b5;
+  box-shadow: 0 0 0 2px #4ee3b588, 0 0 20px #4ee3b555;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button.primary {
+  background: #16302a;
+  border-color: #4ee3b5;
+  color: #4ee3b5;
+}
+
+button.primary:hover {
+  box-shadow: 0 0 0 1px #4ee3b5, 0 0 22px #4ee3b566;
+}
+
+button.amber {
+  border-color: #ffd23e88;
+  color: #ffd23e;
+}
+
+button.amber:hover {
+  border-color: #ffd23e;
+  box-shadow: 0 0 0 1px #ffd23e55, 0 0 16px #ffd23e44;
+  color: #ffd23e;
+}
+
+/* Tabs --------------------------------------------------------------------*/
+
+.tab-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid #3d385c;
+  color: #8d84ad;
+}
+
+.tab.active {
+  color: #0d0a1a;
+  background: #4ee3b5;
+  border-color: #4ee3b5;
+  box-shadow: 0 0 14px #4ee3b555;
+}
+
+.tab.active:hover {
+  color: #0d0a1a;
+  transform: none;
+}
+
+/* Level grid --------------------------------------------------------------*/
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  width: 100%;
+  max-height: 44dvh;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.level-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  text-align: left;
+  padding: 10px 12px;
+  min-height: 64px;
 }
 
-/* Game CSS */
-
-.lava { 
-  background: url("fire.gif");
-  background-position: center;
-  background-size: contain;
+.level-card .num {
+  font-size: 11px;
+  color: #8d84ad;
+  letter-spacing: 0.08em;
 }
 
-.wall { 
-  background: url("wall.jpg");
-  background-position: center;
-  background-size: contain;
+.level-card .name {
+  font-size: 13px;
+  color: #e8e4f4;
 }
 
-.player { 
-  background: no-repeat url("char.png");
-  background-position: center;
-  background-size: contain; 
+.level-card .best {
+  font-size: 11px;
+  color: #ffd23e;
 }
 
-.background { 
-  background:url("background.png");
-  background-size: contain;
-  table-layout: fixed;
-  border-spacing: 0;   
+.level-card .check {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  color: #4ee3b5;
+  font-size: 13px;
+  text-shadow: 0 0 8px #4ee3b599;
 }
 
-.background td { 
-  padding: 0;          
+/* Settings ------------------------------------------------------------- */
+
+.settings-row {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 12px;
+  color: #8d84ad;
+  letter-spacing: 0.04em;
 }
 
-.actor  { 
-  position: absolute;  
+.settings-row label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
 }
 
-.coin { 
-  background: url("coin.png");
-  background-position: center;
-  background-size: contain;
+.settings-row input[type="checkbox"] {
+  accent-color: #4ee3b5;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
 }
 
-.lost .player {
-  background: no-repeat url("chardead.png");
-  background-position: center;
-  background-size: contain; 
+/* Win / pause detail text ------------------------------------------------ */
+
+.stat-row {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  font-size: 15px;
+  color: #e8e4f4;
 }
 
-.won .player {
-  box-shadow: -4px -7px 8px white, 4px -7px 8px white;
-  background: no-repeat url("charwin.png");
-  background-position: center;
-  background-size: contain;  
+.stat-row .label {
+  display: block;
+  font-size: 10px;
+  color: #8d84ad;
+  letter-spacing: 0.1em;
+  margin-bottom: 2px;
+}
+
+.badge {
+  color: #ffd23e;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 10px #ffd23e88;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Touch controls                                                          */
+/* ---------------------------------------------------------------------- */
+
+#touch {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: none;
+}
+
+body.touch-device[data-mode="playing"] #touch,
+body.touch-device[data-mode="editortest"] #touch {
+  display: block;
+}
+
+.touch-btn {
+  position: absolute;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(232, 228, 244, 0.08);
+  border: 1px solid rgba(232, 228, 244, 0.25);
+  color: #e8e4f4;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+}
+
+.touch-btn:active {
+  background: rgba(78, 227, 181, 0.25);
+  border-color: #4ee3b5;
+}
+
+#touch-left {
+  left: 18px;
+}
+
+#touch-right {
+  left: 94px;
+}
+
+#touch-jump {
+  right: 18px;
+}
+
+@media (pointer: coarse) {
+  .touch-btn {
+    width: 72px;
+    height: 72px;
+    font-size: 28px;
+  }
+  #touch-right {
+    left: 106px;
+  }
 }

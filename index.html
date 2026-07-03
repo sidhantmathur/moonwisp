@@ -1,32 +1,18 @@
 <!doctype html>
-
+<html lang="en">
 <head>
-  <script src="game.js"></script>
-  <script src="levels.js"></script>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <meta name="description" content="A platformer game made in pure JS.">
-  <title>Platformer Game</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>WISP</title>
+  <meta name="description" content="WISP — a tiny moody pixel platformer." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-    <div>
-      <h1>Controls</h1>
-      <ul>
-        <li>↑ Jump</li>
-        <li>→ Move Forwards</li>
-        <li>← Move Backwards</li>
-      </ul>
-      <p>
-        You can run and jump at the same time. 
-        <br>
-        This is required to cross several levels.
-        <br>
-        Collect all the coins in each level. 
-      </p>
-    </div>
+  <div id="frame">
+    <canvas id="game"></canvas>
+    <div id="ui"></div>
+    <div id="touch"></div>
+  </div>
+  <script type="module" src="src/main.js"></script>
 </body>
-
-<script>
-  runGame(GAME_LEVELS, DOMDisplay);
-</script>
+</html>
