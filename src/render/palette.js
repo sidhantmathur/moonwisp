@@ -30,6 +30,7 @@ export const PALETTE = {
   // Player
   playerBody: '#4ee3b5',
   playerBodyDark: '#2aa583',
+  playerBelly: '#b0f5dc',
   playerScarf: '#e05f7c',
   playerEye: '#f7fbff',
   playerPupil: '#132030',
@@ -65,6 +66,7 @@ export const PALETTE = {
 export const INK = {
   b: PALETTE.playerBody,
   B: PALETTE.playerBodyDark,
+  n: PALETTE.playerBelly,
   s: PALETTE.playerScarf,
   w: PALETTE.playerEye,
   p: PALETTE.playerPupil,

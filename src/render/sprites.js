@@ -36,66 +36,67 @@ function grain(x, y, seed = 0) {
 }
 
 // ---------------------------------------------------------------------------
-// Player — 12 x 22. A little mint wisp with a scarf. Facing right; the
-// renderer mirrors it for left.
+// Player — 14 x 22. A little mint wisp: flame tuft, big head over a small
+// round body, belly patch, stub arms, scarf with a trailing tail. Facing
+// right; the renderer mirrors it for left.
 
 const P_HEAD = [
-  '....bbbb....',
-  '..bbbbbbbb..',
-  '.bbbbbbbbbb.',
-  '.bbbbbbbbbb.',
-  'bbbbbbbbbbbb',
-  'bbbwwbbbwwbb',
-  'bbbwpbbbwpbb',
-  'bbbbbbbbbbbb',
-  '.bbbbbbbbbB.',
-  '.bbbbbbbbBB.',
-  'sssssssssss.',
-  '.ssssssssss.',
-  '.bbbbbbbbBB.',
-  '.bbbbbbbbBB.',
-  '.bbbbbbbbBB.',
-  '.bbbbbbbBBB.',
-  '..bbbbbbBB..',
-  '..bbbbbbBB..',
+  '.......n......',
+  '......nn......',
+  '......nb......',
+  '......bb......',
+  '....bbbbbb....',
+  '..bbbbbbbbbb..',
+  '.bbbbbbbbbbbb.',
+  '.bbbwwbbbwwbb.',
+  '.bbbwpbbbwpbb.',
+  '.bbbbbbbbbbbB.',
+  '..bbbbppbbbB..',
+  '.ssssssssssss.',
+  'ss.ssssssssss.',
+  '..bbnnnnnnbB..',
+  '.bbbnnnnnnbBB.',
+  'bbbbnnnnnnbBBB',
+  '..bbnnnnnnbB..',
+  '..bbbbbbbbBB..',
 ];
 
 const LEGS = {
   stand: [
-    '..bbb..bbb..',
-    '..bbb..bbb..',
-    '..BBB..BBB..',
-    '..BBB..BBB..',
+    '...bbb..bbb...',
+    '...bbb..bbb...',
+    '...BBB..BBB...',
+    '...BBB..BBB...',
   ],
   run1: [
-    '.bbb....bbb.',
-    'bbb......bbb',
-    'BBB......BBB',
-    '............',
+    '..bbb....bbb..',
+    '.bbb......bbb.',
+    '.BBB......BBB.',
+    '..............',
   ],
   run2: [
-    '..bbb.bbb...',
-    '..bbb..bbb..',
-    '..BBB..BBB..',
-    '............',
+    '...bbb.bbb....',
+    '...bbb..bbb...',
+    '...BBB..BBB...',
+    '..............',
   ],
   run3: [
-    '....bbbb....',
-    '...bbbbbb...',
-    '...BBBBBB...',
-    '............',
+    '.....bbbb.....',
+    '....bbbbbb....',
+    '....BBBBBB....',
+    '..............',
   ],
   jump: [
-    '..bbb..bbb..',
-    '..Bbb..bbB..',
-    '...BB..BB...',
-    '............',
+    '...bbb..bbb...',
+    '...Bbb..bbB...',
+    '....BB..BB....',
+    '..............',
   ],
   fall: [
-    '.bbb....bbb.',
-    '.bBB....BBb.',
-    '.BB......BB.',
-    '............',
+    '..bbb....bbb..',
+    '..bBB....BBb..',
+    '..BB......BB..',
+    '..............',
   ],
 };
 
