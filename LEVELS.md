@@ -1,4 +1,4 @@
-# WISP level format
+# MOONWISP level format
 
 Levels are plain ASCII grids: each level is an array of equal-length strings,
 one character per 16px tile. This file is a complete spec — paste it into any

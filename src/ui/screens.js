@@ -40,8 +40,8 @@ export function initScreens(app) {
 
   const titleScreen = el('div', 'screen');
   {
-    titleScreen.appendChild(el('h1', null, 'WISP'));
-    titleScreen.appendChild(el('p', 'tagline', 'a tiny platformer'));
+    titleScreen.appendChild(el('h1', null, 'MOONWISP'));
+    titleScreen.appendChild(el('p', 'tagline', 'a tiny moonlit platformer'));
     const row = el('div', 'btn-row');
     const playBtn = button('Play', { className: 'primary', onClick: () => app.quitToMenu() });
     row.appendChild(playBtn);

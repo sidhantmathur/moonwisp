@@ -226,14 +226,14 @@ const loop = createLoop({ update, render });
 loop.start();
 
 // Console/debug handle (also handy for automated playtesting):
-//   __wisp.step(0.5) advances the simulation half a second; __wisp.frame()
+//   __moonwisp.step(0.5) advances the simulation half a second; __moonwisp.frame()
 //   renders once. Works even when rAF is suspended (hidden tabs).
 app.step = (seconds = 1 / 120) => {
   const steps = Math.max(1, Math.round(seconds * 120));
   for (let i = 0; i < steps; i++) update(1 / 120);
 };
 app.frame = () => render(1, performance.now() / 1000);
-window.__wisp = app;
+window.__moonwisp = app;
 
 // Mark editor-spawned games so pause/resume returns to the right mode.
 const origStartCustom = app.startCustomLevel;

@@ -266,7 +266,7 @@ export function initEditor(app) {
   const panel = document.createElement('div');
   panel.id = 'editor-panel';
   panel.innerHTML = `
-    <h3>WISP Editor</h3>
+    <h3>MOONWISP Editor</h3>
     <label>Level name
       <input type="text" id="editor-name" value="${levelName}" maxlength="40" />
     </label>
