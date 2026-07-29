@@ -1,6 +1,6 @@
 // localStorage persistence: per-level best times/completion and settings.
 
-const KEY = 'platforming-game-v2';
+const KEY = 'moonwisp-v1';
 
 function load() {
   try {
