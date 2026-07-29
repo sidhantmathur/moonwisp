@@ -3,7 +3,7 @@
 A tiny, moody pixel platformer. Pure canvas, vanilla JS, zero dependencies,
 zero build step — every sprite, sound, and level is generated from code.
 
-**Play it: https://sidhantmathur.github.io/Moonwisp/**
+**Play it: https://sidhantmathur.github.io/moonwisp/**
 
 ## Controls
 
