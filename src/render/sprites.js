@@ -36,18 +36,18 @@ function grain(x, y, seed = 0) {
 }
 
 // ---------------------------------------------------------------------------
-// Player — 14 x 22. A little mint wisp: flame tuft, big head over a small
-// round body, belly patch, stub arms, scarf with a trailing tail. Facing
-// right; the renderer mirrors it for left.
+// Player — 14 x 22. A little mint wisp in a bent-tip wizard hat (door purple,
+// gold band), big head over a small round body, belly patch, stub arms, scarf
+// with a trailing tail. Facing right; the renderer mirrors it for left.
 
 const P_HEAD = [
-  '.......n......',
-  '......nn......',
-  '......nb......',
-  '......bb......',
-  '....bbbbbb....',
-  '..bbbbbbbbbb..',
-  '.bbbbbbbbbbbb.',
+  '.........dd...',
+  '.......ddd....',
+  '......dddd....',
+  '.....ddddd....',
+  '.....ddddd....',
+  '....dccddd....',
+  '.dddddddddddd.',
   '.bbbwwbbbwwbb.',
   '.bbbwpbbbwpbb.',
   '.bbbbbbbbbbbB.',
